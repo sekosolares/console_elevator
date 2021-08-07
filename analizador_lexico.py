@@ -11,7 +11,7 @@ class BadLevelRangeException(Error):
 class Ascensor():
     nivel = 0
     estado = 'inicio'
-    max_level = 5
+    max_level = 10
 
     def print_instrucciones(self, piso_act):
         print("\n\nIndique a que nivel se dirige (ingrese [0] para ir a PB):")
@@ -21,7 +21,9 @@ class Ascensor():
             
         for level in range( (self.max_level * -1), 1):
             level = level * -1 if level < 0 else "PB"
-            print(f"[ {level} ] <-- Esta aqui" if level == piso_act else f"[ {level} ]")
+            label = str(level) if type(level) != 'str' else level
+            label = label.ljust(3, ' ')
+            print(f"[  {label}] <-- Esta aqui" if level == piso_act else f"[  {label}]")
 
 
     def ascensor(self):
